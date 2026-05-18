@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Flood Detection Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Smart Flood Detection Demo</h1>
+    </header>
+
+    <div class="container">
+        <div class="panel left-panel">
+            <h2>Current Water Sensor Reading</h2>
+            <div class="reading-box" id="dash-reading">0%</div>
+            <div class="status-box" id="dash-status">Status: Normal</div>
+            
+            <p>Sistem ini memantau paras air secara masa nyata menggunakan sensor di kawasan berisiko.</p>
+            
+            <h3>Reading History (Simulated)</h3>
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>Masa</th>
+                        <th>Bacaan</th>
+                        <th>Status Bacaan</th>
+                    </tr>
+                </thead>
+                <tbody id="history-body">
+                    </tbody>
+            </table>
+        </div>
+
+        <div class="panel right-panel">
+            <h2>Hardware Simulator</h2>
+            
+            <div class="arduino-board">
+                <div class="board-label">ARDUINO UNO SIMULATION</div>
+                
+                <div class="lcd" id="hw-lcd">
+                    <span id="lcd-line1">Water Level: 0%</span>
+                    <span id="lcd-line2">Green Alert!</span>
+                </div>
+
+                <div class="output-components">
+                    <div class="led-group">
+                        <p class="comp-label">LED Indicators</p>
+                        <div class="leds">
+                            <div class="led green on" id="led-green"></div>
+                            <div class="led orange" id="led-orange"></div>
+                            <div class="led red" id="led-red"></div>
+                        </div>
+                    </div>
+
+                    <div class="buzzer-group">
+                        <p class="comp-label">Buzzer</p>
+                        <div class="buzzer" id="hw-buzzer">
+                            <div class="buzzer-hole"></div>
+                        </div>
+                        <div class="buzzer-status" id="buzzer-status">OFF</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sensor-container">
+                <div class="hc-sr04">
+                    <div class="sonar-eye"><div class="mesh"></div></div>
+                    <div class="sonar-eye"><div class="mesh"></div></div>
+                    <div class="sensor-label">HC-SR04</div>
+                </div>
+                
+                <div class="slider-container">
+                    <label for="waterSlider"><strong>Simulate Water Level: <span id="slider-val">0</span>%</strong></label>
+                    <input type="range" id="waterSlider" min="0" max="100" value="0">
+                    <p><small>Gerakkan slider untuk simulasi air naik.</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

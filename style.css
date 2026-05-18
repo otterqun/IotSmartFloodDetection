@@ -1,0 +1,271 @@
+/* --- GAYA ASAS --- */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f6fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+}
+
+header {
+    background-color: #002147;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+header h1 { margin: 0; font-size: 24px; text-transform: uppercase; }
+
+.container {
+    display: flex;
+    width: 100%;
+    margin-top: 60px;
+}
+
+.panel {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+/* --- PANEL KIRI: DASHBOARD --- */
+.left-panel {
+    background-color: #fff;
+    border-right: 2px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reading-box {
+    font-size: 60px;
+    font-weight: bold;
+    margin: 20px 0;
+    transition: color 0.3s;
+}
+
+.status-box {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.history-table th, .history-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.history-table th {
+    background-color: #002147;
+    color: white;
+}
+
+/* --- PANEL KANAN: HARDWARE SIMULATOR --- */
+.right-panel {
+    background-color: #e8ecef;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Objek 1: Arduino Board */
+.arduino-board {
+    background-color: #00878F; /* Warna rasmi board Arduino */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3), inset 0 0 20px rgba(0,0,0,0.2);
+    width: 80%;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.board-label {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+/* LCD Display */
+.lcd {
+    background-color: #0000ff;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 22px;
+    padding: 15px;
+    border: 8px solid #111;
+    border-radius: 5px;
+    margin: 20px 0;
+    text-align: left;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: inset 0 0 10px rgba(255,255,255,0.2);
+}
+
+.output-components {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    margin-top: 20px;
+}
+
+.comp-label {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* Objek 2: LEDs */
+.leds {
+    display: flex;
+    gap: 15px;
+    background: rgba(0,0,0,0.2);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.led {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #555;
+    box-shadow: inset 0 -3px 5px rgba(0,0,0,0.5);
+    opacity: 0.3;
+}
+
+.led.green.on { background-color: #00ff00; opacity: 1; box-shadow: 0 0 15px #00ff00, inset 0 -3px 5px rgba(0,0,0,0.3); }
+.led.orange.on { background-color: #ffa500; opacity: 1; box-shadow: 0 0 15px #ffa500, inset 0 -3px 5px rgba(0,0,0,0.3); }
+.led.red.on { background-color: #ff0000; opacity: 1; box-shadow: 0 0 15px #ff0000, inset 0 -3px 5px rgba(0,0,0,0.3); }
+
+/* Objek 3: Buzzer */
+.buzzer-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0,0,0,0.2);
+    padding: 10px;
+    border-radius: 10px;
+    min-width: 100px;
+}
+
+.buzzer {
+    width: 50px;
+    height: 50px;
+    background-color: #2f3640;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 0 #111, inset 0 2px 5px rgba(255,255,255,0.2);
+}
+
+.buzzer-hole {
+    width: 15px;
+    height: 15px;
+    background-color: #111;
+    border-radius: 50%;
+}
+
+.buzzer-status {
+    color: #00ff00;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Animasi Buzzer Bergegar */
+@keyframes vibrate {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+.buzzer.ringing {
+    animation: vibrate 0.1s linear infinite;
+    background-color: #d63031; /* Merah bila bunyi */
+}
+
+/* Objek 4: Sensor HC-SR04 & Slider */
+.sensor-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.hc-sr04 {
+    width: 120px;
+    height: 60px;
+    background-color: #1e3799; /* Biru sensor */
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.sonar-eye {
+    width: 40px;
+    height: 40px;
+    background-color: #dcdde1; /* Silver */
+    border-radius: 50%;
+    border: 3px solid #718093;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sonar-eye .mesh {
+    width: 25px;
+    height: 25px;
+    background-color: #353b48;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.sensor-label {
+    position: absolute;
+    bottom: -25px;
+    font-weight: bold;
+    color: #333;
+}
+
+.slider-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+}
+
+input[type=range] {
+    width: 100%;
+    margin: 15px 0;
+}
